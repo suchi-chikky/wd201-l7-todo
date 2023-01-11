@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="<%= csrfToken %>" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="/js/script.js" type="text/javascript"></script>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <!-- ender the contents of header.js -->
+
+    <div class="grid grid-cols-6">
+      <div class="col-start-3 col-span-2">
+        <header><%- include('header.ejs') %></header>
+        
+        <p class="py-2"> Welcome to Todo-Manager</p>
+        <p class="py-2"> New here ? <a href="/signup" class="text-green-600"> Sign-up now</a></p>
+        <p class="py-2"> Already have an account ? <a href="/login" class="text-green-600">Sign-In</a></p>
+     
+        <% if (messages && messages.error && messages.error.length > 0) { %>
+          <% messages.error.forEach((error_msg) => { %>
+           <p class="text-red-500 py-2"><%= error_msg %></p>
+          <% }) %>  
+        <% } %>
+    <!-- render the contents of footer.ejs  -->
+    <%- include("footer.ejs") %>
+  </body>
+</html>
